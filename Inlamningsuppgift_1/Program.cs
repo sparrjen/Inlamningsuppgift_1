@@ -29,7 +29,7 @@ namespace Inlamningsuppgift_1
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "Worker Service terminated unexpectedly");
+                Log.Fatal(ex, $"Worker Service terminated unexpectedly, Error:: {ex.Message}");
                 return;
             }
             finally
@@ -41,6 +41,8 @@ namespace Inlamningsuppgift_1
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
+            .UseWindowsService()
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
