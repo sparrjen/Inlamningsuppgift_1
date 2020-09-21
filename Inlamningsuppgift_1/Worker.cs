@@ -11,10 +11,10 @@ namespace Inlamningsuppgift_1
 {
     public class Worker : BackgroundService
     {
+
         private readonly ILogger<Worker> _logger;
         private readonly Random _random = new Random();
-        
-        
+                
         public Worker(ILogger<Worker> logger)
         {
             _logger = logger;
